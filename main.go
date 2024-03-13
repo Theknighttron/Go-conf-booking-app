@@ -47,6 +47,19 @@ func main() {
 				fmt.Println("Our conference is booked up, Come back next year.")
 				break
 			}
+
+			if remainingTickets > 0 {
+				fmt.Printf("\n")
+				var buyAnotherTicket string
+				fmt.Printf("do you want to buy another ticket? Y/N: ")
+				fmt.Scan(&buyAnotherTicket)
+				if buyAnotherTicket == "y" || buyAnotherTicket == "Y" {
+					continue
+				} else {
+					break
+				}
+			}
+			
 		} else {
 			fmt.Print("\n")
 			if !isValidName {
