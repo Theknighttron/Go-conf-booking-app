@@ -48,16 +48,8 @@ func main() {
 				break
 			}
 
-			if remainingTickets > 0 {
-				fmt.Printf("\n")
-				var buyAnotherTicket string
-				fmt.Printf("do you want to buy another ticket? Y/N: ")
-				fmt.Scan(&buyAnotherTicket)
-				if buyAnotherTicket == "y" || buyAnotherTicket == "Y" {
-					continue
-				} else {
-					break
-				}
+			if !buyAnotherTicket() {
+				break;
 			}
 			
 		} else {
@@ -139,4 +131,18 @@ func bookTicket(userTickets uint, firstName string, lastName string, email strin
 
 	fmt.Printf("Thank you %v %v for booking %v tickets. You will receive a confirmation email at %v \n", firstName, lastName, userTickets, email)
 	fmt.Printf("%v tickets remaining for %v\n", remainingTickets, conferenceName)
+}
+
+func buyAnotherTicket() bool {
+	if remainingTickets > 0 && remainingTickets <= 50{
+		fmt.Printf("\n")
+		var response string
+		fmt.Printf("Do you want to buy another ticket? Y/N: ")
+		fmt.Scan(&response)
+		
+		return response == "y" || response == "Y" 
+		
+	}
+
+	return false
 }
